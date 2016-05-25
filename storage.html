@@ -1,0 +1,169 @@
+<!Doctype Html>
+<html>
+<head>
+    <title>TodoList Page</title>
+    <link rel="stylesheet" text="text/css" href="main.css"> 
+</head>
+
+<body>
+   <h1 id="titre">Javascript - TODO List</h1>
+   <nav>
+        <a href="index.html">HomePage</a>
+        <a href="number.html">number</a>
+        <a href="time.html">time</a>
+        <a href="todolist.html">todo</a>
+        <a href="storage.html">Storage</a>
+
+    </nav>
+
+    <h1>A list of Todo things</h1>
+    <table border="1">
+        <thead>
+        <tr class="titre" id="tit">
+         <td>N°</td>
+         <td>Tâche</td>
+         <td>Date échéance</td>
+         <td>priorité</td>
+         <td>Statut</td>
+        </tr>
+        </thead>
+        <tbody id="ligne">
+        <tr class="line">
+         <td>1</td>
+         <td>penser a téléphoner a Marc</td>
+         <td>11/03/2016</td>
+         <td>0</td>
+         <td>TODO</td>
+        </tr>
+        <tr class="line">
+         <td>2</td>
+         <td>faire un document</td>
+         <td>15/03/2016</td>
+         <td>1</td>
+         <td>TODO</td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <input type="text" name="idTask" id="idt" placeholder="Enter an id"/>
+    <input type="text" name="descTask" id="dt" placeholder="Enter a description"/>
+    <input type="date" name="dateTask" id="dat" placeholder="Enter a date"/>
+    <input type="text" name="priorityTask" id="prt" placeholder="Enter a priority"/>
+    <input type="text" name="statusTask" id="st" placeholder="Enter a status"/>
+    <button name="addTask" id="at" onclick="addItem();">Add a task (and save)</button> <br>
+    <br/>    
+    <button name="showTasks" id="showJSON" onclick="showJSON();">Show JSON (from Storage)</button>
+    <button name="clearTask" id="clearJSON" onclick="clearJSON();">Clear JSON Storage</button>
+    
+    <p id="storage">Test Storage</p>
+    
+    <button name="saveTasks" id="saveList" onclick="saveList();">Save List (in Storage)</button>
+    <button name="showTasks" id="showList" onclick="showList();">Show List (from Storage)</button>
+    <button name="clearTask" id="clearList" onclick="clearList();">Clear Storage</button>
+    <br/>
+    <button name="saveLTasks" id="saveLList" onclick="saveLList();">Save List (in Local Storage)</button>
+    <button name="showLTasks" id="showLList" onclick="showLList();">Show List (from Local Storage)</button>
+    <button name="clearLTask" id="clearLList" onclick="clearLList();">Clear Local Storage</button>
+    
+
+   </body>
+    <script type="text/javascript">
+        <!-- add a line todo -->
+        function addItem () {
+            // defaultValues
+            //var defaultValues = new Array("T001","Task001",new Date(),"0","TODO");
+            
+            var idTask = document.getElementById("idt");
+            var descTask = document.getElementById("dt");
+            var dateTask = document.getElementById("dat");
+            var priorityTask = document.getElementById("prt");
+            var statusTask = document.getElementById("st");
+            var defaultValues = new Array(idTask.value, descTask.value, dateTask.value, priorityTask.value,statusTask.value);
+            //defaultValues[0]=idTask.value;
+            //defaultValues[1]=descTask.value;
+            //defaultValues[2]=dateTask.value;
+            //defaultValues[3]=priorityTask.value;
+            //defaultValues[4]=statusTask.value;
+            
+            // task object
+            var Task = function (id, name, date, priority, status) {
+                this.id = id;
+                this.name = name;
+                this.date = date;
+                this.priority = priority;
+                this.status = status;
+                this.display = function () {
+                    alert("New Task : " + this.id + "-" + this.desc + "-" + this.date + "-" + this.priority + "-" + this.status);
+                }
+            }
+            var task = new Task(idTask.value, descTask.value, dateTask.value, priorityTask.value,statusTask.value);
+            task.display();
+            // save it to SessionStorage
+            saveJSON(task);
+            // set in a tab
+            
+            
+            // save it in storage
+            //sessionStorage.setItem("T001","Task001");
+            // get body tab
+            var tit = document.getElementById("ligne");
+            // prepare values
+            var item = document.createElement("tr");
+            tit.appendChild(item);
+            // add content
+            var cell;
+            for (var i=0;i<5;i++) {
+                cell = document.createElement("td");
+                cell.textContent=defaultValues[i];
+                item.appendChild(cell);
+            }
+        }
+        <!-- Help -->
+        function helpTodo() {
+            alert("Enter a Task");
+        }
+        
+        <!-- sessionStorage -->
+        function showList() {
+            var value = sessionStorage.getItem("name");
+            alert(value);
+        }    
+        function saveList() {
+            sessionStorage.setItem("name", "tache à faire - SESSION");
+        }
+        function clearList() {
+            sessionStorage.clear();
+        }
+
+        <!-- localStorage --> 
+        function showLList() {
+            var value = localStorage.getItem("name");
+            alert(value);
+        }    
+        function saveLList() {
+            localStorage.setItem("name", "tache à faire - LOCAL");
+        }
+        function clearLList() {
+            localStorage.clear();
+        }
+
+        <!-- JSON localStorage --> 
+        function showJSON() {
+            var value = localStorage.getItem("task3");
+            alert(value);
+            var value2 = localStorage.getItem("task4");
+            alert(value2);
+        }    
+        function saveJSON(task) {
+            var taskKey = "task" + task.id;
+            var taskValue = JSON.stringify(task);
+            localStorage.setItem(taskKey, taskValue);
+        }
+        function clearJSON() {
+            localStorage.clear();
+        }
+
+    </script>
+    <script type="text/javascript" src="myScript.js"></script>
+    
+</html>

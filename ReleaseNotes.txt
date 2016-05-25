@@ -1,0 +1,98 @@
+Projet Javascript : TimeCalc
+----------------------------
+
+
+TODO --------------------------------------------------------------------------------------------
+
+- loop pour les taches sauvées 
+- affichage de la liste des taches
+- deplacer les tests vers un page Storage et renommer page Sorage en TODOSave
+
+24/03 -------------------------------------------------------------------------------------------
+
+-correction bug affichage min
+
+15/03 -------------------------------------------------------------------------------------------
+
+-bouton : afficher toutes les taches (Storage) dans une alert
+-page storage --> JSON.stringify()
+
+************************************* Version 0.4 ***********************************************
+10/03 -------------------------------------------------------------------------------------------
+
+-cloture page todo simple
+-creation page "storage"
+- ajout dans la barre de navigation+index
+
+08/03 -------------------------------------------------------------------------------------------
+
+-todolist : afficher l'oject dans le tableau
+
+01/03 -------------------------------------------------------------------------------------------
+
+-todolist : sauver objet dans la storage
+-todolist : créer un object "task" : ok
+-todolist : ajouter boutons pour save/clear sessionSTorage
+-todolist : ajouter boutons pour save/clear localSTorage
+
+26/02 -------------------------------------------------------------------------------------------
+
+-todolist : add button mouseover event
+-todolist : add button form save/get storage
+
+23/02 -------------------------------------------------------------------------------------------
+
+-index : style dans la page index
+-todolist : add a bouton and function to add a todo
+
+************************************* Version 0.3 ***********************************************
+18/02 -------------------------------------------------------------------------------------------
+
+-function - transform "hh:mm" en Number (page : time)
+-rearrange GUI - homepage, number, time, todo
+-ajout version dans la HomePage
+-tester les zones input a vide
+
+
+************************************* Version 0.2 ***********************************************
+15/02 -------------------------------------------------------------------------------------------
+
+-update de la navigation (4 pages) 
+-ajout placeholder
+-ajout input time
+
+12/02 -------------------------------------------------------------------------------------------
+
+-intercepter les heures (format)
+
+11/02 -------------------------------------------------------------------------------------------
+
+-utiliser la function testDate
+-renommer testDate --> calculateDate
+-faire un function chackDate
+
+09/02 -------------------------------------------------------------------------------------------
+
+-changement de la fonction calculate (ajout 4 paremètres)
+-appel calculate dans la fonction checkValues
+-ajout function testDate : diff de 2 date/heure * 2 et addition ==> resultat
+
+08/02 -------------------------------------------------------------------------------------------
+
+-test différence date
+-enlever le formulaire + test checkValue : ok
+
+04/02 -------------------------------------------------------------------------------------------
+
+-ajout navigation 
+-ajout valeur par défaut (entière)
+-retirer la zone résultat
+-test avec date 
+
+15/01 -------------------------------------------------------------------------------------------
+
+Creation page
+ajout d'un css
+ajout d'un script.js externe
+
+************************************* Version 0.0 ***********************************************

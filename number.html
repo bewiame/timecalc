@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Number</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+</head>
+<body>
+    <h1 id="titre">Javascript - Number</h1>
+    <nav>
+        <a href="index.html">HomePage</a>
+        <a href="number.html">Number</a>
+        <a href="time.html">Time</a>
+        <a href="todolist.html">Todo</a>
+        <a href="todosave.html">Todo Save</a>
+
+    </nav>
+    <br/>
+    <!-- Form 
+    <form id="forma" name="formular" onsubmit="calculate();"> -->
+        <table border="0">
+            <tbody>
+                <tr class="line">
+                    <td>Value 1 : </td>
+                    <td><input type="text" name="inAM" id="inam" placeholder="set a number"/></td>
+                </tr>
+                <tr class="line">
+                    <td>Value 2 : </td>
+                     <td><input type="text" name="outAM" id="outam" placeholder="set a number"/></td>
+                </tr>
+                <tr class="line">
+                    <td>Value 3 : </td>
+                    <td><input type="text" name="inPM" id="inpm" placeholder="set a number"/></td>
+                </tr>
+                <tr class="line">
+                    <td>Value 4 : </td>
+                    <td><input type="text" name="outPM" id="outpm" placeholder="set a number"/></td>                    
+                </tr>
+            </tbody>
+        </table>
+        </br>
+        <button name="myButton" id="myButtonId" onclick="checkValues();">Calculate!</button>
+    <!-- Form 
+    </form> -->
+    
+    <!-- statut -->
+    <p id="statut" class='output'>Waiting for values</p>
+    <br/>
+    
+    <!-- bouton -->
+    <button name="fill" id="fillId" onclick="setDefaultValues();">fill with default values</button>
+        
+    <!-- JavaScript -->
+    <script type="text/javascript">
+    
+    <!-- checkValues -->
+    function checkValues() {
+        console.info(getFormattedMessage("checkValues", "start"));
+
+        var inam = document.getElementById('inam') ;
+        var outam = document.getElementById('outam') ;
+        var inpm = document.getElementById('inpm') ;
+        var outpm = document.getElementById('outpm') ;
+
+        if (inam.value == "" || outam.value =="" || inpm.value=="" || outpm.value=="")  {
+            alert('Please, fill the values');
+        } else {
+           calculate(inam.value, outam.value, inpm.value, outpm.value);            
+        }
+
+    }
+        
+    <!-- calculate -->
+    function calculate(n1, n2, n3,n4) {
+        console.info(getFormattedMessage("calculate","start"));
+        var vals=[0,0,0,0];
+        vals[0] = Number(n1);
+        vals[1] = Number(n2);
+        vals[2] = Number(n3);
+        vals[3] = Number(n4);
+        var total=0;
+        for (var i = vals.length - 1; i >= 0; i--) {
+            total = total + vals[i];
+        };
+
+        datejour = new Date;
+        // set the total in statut
+        document.getElementById('statut').innerHTML="Calculate for : " + datejour + " = " + total;
+
+        <!-- show result -->
+        // alert("total : " + total);
+    }
+        
+    <!-- setDefaultValues -->
+    function setDefaultValues() {
+        console.info(getFormattedMessage("fillDefaultValues", "test"));
+        inam.value=10;
+        outam.value=20;
+        inpm.value=30;
+        outpm.value=40;
+    }
+
+    </script>
+    <script type="text/javascript" src="myScript.js"></script>
+    <!-- End JavaScript -->
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+body {
+    background-color: royalblue;
+    font-size: normal;
+    font-style: normal;
+}
+h1 {
+    color: aquamarine;
+}
+table {
+    background-color: azure;
+}
+#result {
+    font-size: normal;
+}
+#forma {
+	background-color: pink;
+}
+#statut {
+    font-size: normal;
+}
+.line {
+	color: red;
+}
+nav {
+    background-color:antiquewhite;
+}
+
+.titre {
+    background-color: blue;
+    color: aliceblue;
+}
+
+textarea {
+    background-color: aquamarine;
+    box-sizing: border-box;
+}
+.output {
+    background-color: orange;
+    font-style: italic;
+    font-weight: bold;
+    font-family: fantasy;
+    text-align: center;
+}
+
+.diff {
+    text-decoration-color: black;
+}
+
+.img {
+    background-image: url(minions.jpg);
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+#mysection {
+    background-color: blue;
+    opacity: 0.5;
+    color: white;
+}
+
+.whitetext {
+    color: white;
+}
+
+ul {
+    list-style-type:decimal;
+    list-style-position: inside;
+    border-color: chocolate;
+    border-bottom-style:solid;    
+}
+
+#storage {
+    background-color:cyan;
+    font-style: italic;
+    font-size: 25px;
+    font-family: sans-serif;
+    color: chocolate;
+    font-weight: bold;
+}

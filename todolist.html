@@ -1,0 +1,108 @@
+<!Doctype Html>
+<html>
+<head>
+    <title>TodoList Page</title>
+    <link rel="stylesheet" text="text/css" href="main.css"> 
+</head>
+
+<body>
+   <h1 id="titre">Javascript - TODO List</h1>
+   <nav>
+        <a href="index.html">HomePage</a>
+        <a href="number.html">Number</a>
+        <a href="time.html">Time</a>
+        <a href="todolist.html">Todo</a>
+        <a href="todosave.html">Todo Save</a>
+
+    </nav>
+
+    <h1>A list of Todo things</h1>
+    <table border="1">
+        <thead>
+        <tr class="titre" id="tit">
+         <td>N°</td>
+         <td>Tâche</td>
+         <td>Date échéance</td>
+         <td>priorité</td>
+         <td>Statut</td>
+        </tr>
+        </thead>
+        <tbody id="ligne">
+        <tr class="line">
+         <td>1</td>
+         <td>penser a téléphoner a Marc</td>
+         <td>11/03/2016</td>
+         <td>0</td>
+         <td>TODO</td>
+        </tr>
+        <tr class="line">
+         <td>2</td>
+         <td>faire un document</td>
+         <td>15/03/2016</td>
+         <td>1</td>
+         <td>TODO</td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <input type="text" name="idTask" id="idt" placeholder="Enter an id"/>
+    <input type="text" name="descTask" id="dt" placeholder="Enter a description"/>
+    <input type="date" name="dateTask" id="dat" placeholder="Enter a date"/>
+    <input type="text" name="priorityTask" id="prt" placeholder="Enter a priority"/>
+    <input type="text" name="statusTask" id="st" placeholder="Enter a status"/>
+    <button name="addTask" id="at" onclick="addItem();">Add a task</button> <br>
+    
+    <br/>
+    <button name="helpTask" id="helpTask" onmouseover="helpTodo();">Help</button> 
+    
+
+   </body>
+    <script type="text/javascript">
+        <!-- add a line todo -->
+        function addItem () {
+            // defaultValues
+            //var defaultValues = new Array("T001","Task001",new Date(),"0","TODO");
+            
+            var idTask = document.getElementById("idt");
+            var descTask = document.getElementById("dt");
+            var dateTask = document.getElementById("dat");
+            var priorityTask = document.getElementById("prt");
+            var statusTask = document.getElementById("st");
+            var defaultValues = new Array(idTask.value, descTask.value, dateTask.value, priorityTask.value,statusTask.value);
+            
+            // task object
+            var Task = function (id, name, date, priority, status) {
+                this.id = id;
+                this.name = name;
+                this.date = date;
+                this.priority = priority;
+                this.status = status;
+                this.display = function () {
+                    alert("New Task : " + this.id + "-" + this.desc + "-" + this.date + "-" + this.priority + "-" + this.status);
+                }
+            }
+            var task = new Task(idTask.value, descTask.value, dateTask.value, priorityTask.value,statusTask.value);
+            task.display();
+            
+            // get body tab
+            var tit = document.getElementById("ligne");
+            // prepare values
+            var item = document.createElement("tr");
+            tit.appendChild(item);
+            // add content
+            var cell;
+            for (var i=0;i<5;i++) {
+                cell = document.createElement("td");
+                cell.textContent=defaultValues[i];
+                item.appendChild(cell);
+            }
+        }
+        <!-- Help -->
+        function helpTodo() {
+            alert("Enter a Task");
+        }
+        
+    </script>
+    <script type="text/javascript" src="myScript.js"></script>
+    
+</html>

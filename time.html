@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Date</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+</head>
+<body>
+    <h1 id="titre">Javascript - Date</h1>
+    <nav>
+        <a href="index.html">HomePage</a>
+        <a href="number.html">Number</a>
+        <a href="time.html">Time</a>
+        <a href="todolist.html">Todo</a>
+        <a href="todosave.html">Todo Save</a>
+
+    </nav>
+    <br/>
+        <table border="0">
+            <tbody>
+                <tr class="line">
+                    <td>In (AM) : </td>
+                    <td><input type="time" name="inAM" id="inam" placeholder="set a value (hh:mm)"/></td>
+                    <td>Out (AM)) : </td>
+                    <td><input type="text" name="outAM" id="outam" placeholder="set a value (hh:mm)"/></td>
+                    <td><p class="diff" id="diff1"></p></td>
+                </tr>
+                <tr class="line">
+                    <td>In (PM) : </td>
+                    <td><input type="text" name="inPM" id="inpm" placeholder="set a value (hh:mm)"/></td>
+                    <td>Out (PM)) : </td>
+                    <td><input type="text" name="outPM" id="outpm" placeholder="set a value (hh:mm)"/></td>
+                    <td><p class="diff" id="diff2"></p></td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <br/>
+        <button name="myButton" id="myButtonId" onclick="checkDate();">Calculate!</button>
+        <button name="myButtonTest" id="myButtonTestId" onclick="fillDefaultDate();">set default date values</button>    
+        <br/>
+        <br/>
+        <br/>
+        
+    <!-- Results -->
+    <table border="0">
+        <tr>
+            <td><p>Time calculated : </p></td>
+            <td><p id="result" class="output">0</p></td>
+        </tr>
+    </table>
+    
+    <!-- JavaScript -->
+    <script type="text/javascript">
+            
+    <!-- checkDate -->
+    function checkDate() {
+        console.info(getFormattedMessage("checkDate", "start"));        
+        // check (directly) empty values
+        if (document.getElementById('inam').value == "" || document.getElementById('outam').value =="" || document.getElementById('inpm').value=="" || document.getElementById('outpm').value=="")  {
+            alert('Please, fill the values');
+        } else {
+           // Get input fields 
+           var inam = document.getElementById('inam') ;
+           var outam = document.getElementById('outam') ;
+           var inpm = document.getElementById('inpm') ;
+           var outpm = document.getElementById('outpm') ;
+
+           // Convert value fields in date        
+           var dateDayHour1 = convertStringtoDate(inam.value);
+           var dateDayHour2 = convertStringtoDate(outam.value);
+           var dateDayHour3 = convertStringtoDate(inpm.value);
+           var dateDayHour4 = convertStringtoDate(outpm.value);
+        
+           // calculate Date
+           calculateDate(dateDayHour1,dateDayHour2,dateDayHour3,dateDayHour4);
+        }
+
+
+    } 
+        
+    <!-- calculateDate -->
+    function calculateDate(date01, date02, date03, date04) {
+        console.info(getFormattedMessage("calculateDate", "start"));
+        var diff = dateDiff(date01,date02);
+        document.getElementById('diff1').innerHTML=diff.hour + ':' + diff.min;
+        var diff2 = dateDiff(date03,date04);
+        document.getElementById('diff2').innerHTML=diff2.hour + ':' + diff2.min;
+        // Format Hour/Min (No need day and sec)
+        var h = diff.hour + diff2.hour;
+        var m = diff.min + diff2.min;
+        var hm = getHM(m);
+        var h2 = h + hm.hour;
+        var m2 = hm.min;
+        if (h2==0) {
+            document.getElementById('result').innerHTML=m2 + " Minute(s) : ";            
+        } else {
+            document.getElementById('result').innerHTML=h2 + "h" + m2 + " Minute(s) : ";
+        }
+    }
+        
+    <!-- convertStringtoDate -->    
+    function convertStringtoDate(value) {
+        // transform string "hh:mm" in date
+        var h = value.substring(0,2);
+        var m = value.substring(3,5);
+        var dateDayHour = new Date();        
+        dateDayHour.setHours(h,m);
+        return dateDayHour;        
+    }
+
+    <!-- setDefaultDate -->
+    function fillDefaultDate() {
+        // Set default values
+        console.info(getFormattedMessage("fillDefaultValues", "test"));
+        inam.value="23:15";
+        outam.value="23:20";
+        inpm.value="23:15";
+        outpm.value="23:20";
+    }
+
+    </script>
+    <script type="text/javascript" src="myScript.js"></script>
+    <!-- End JavaScript -->
+</body>
+
+</html>
